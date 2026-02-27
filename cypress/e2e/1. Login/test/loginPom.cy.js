@@ -1,30 +1,22 @@
-describe('Validando Login', () =>{
+import { loginPage } from "../pages/login.Page.js";
+
+describe('Validando Login - aplicando POM', () =>{
 
     beforeEach(() =>{
         cy.visit('https://the-internet.herokuapp.com/login');
         cy.get('.example').should('contain', 'Login Page');
     });
-    //Login exitoso
     it('Validar el inicio de sesion exitoso', () =>{
-        cy.get('#username').type('tomsmith');
-        cy.get('#password').type('SuperSecretPassword!');
-        cy.get('.radius').contains('Login').click();
+        loginPage.hacerLogin('tomsmith', 'SuperSecretPassword!', 'Secure Area');
         cy.get('.example').should('contain','Secure Area');
     });
-    //Login con password incorrecto
     it('Validar un inicio de sesion con contraseña incorrecta', () =>{
-        cy.get('#username').type('tomsmith');
-        cy.get('#password').type('Password');
-        cy.get('.radius').contains('Login').click();
+        loginPage.hacerLogin('tomsmith', 'Password!', 'Secure Area');
         cy.get('#flash').should('contain', 'password is invalid');
     });
-    //Login con usuario vacío
     it('Validar un inicio de sesion con usuario vacio', () =>{
-        cy.get('#password').type('SuperSecretPassword!');
-        cy.get('.radius').contains('Login').click();
+        loginPage.hacerLogin('tom', 'SuperSecretPassword!', 'Secure Area');
         cy.get('#flash').should('contain','username is invalid');
     });
-    
+
 });
-
-
