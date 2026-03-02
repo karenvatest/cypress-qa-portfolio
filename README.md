@@ -11,6 +11,7 @@ The purpose of this project is to demonstrate:
 - Form validation testing
 - API + UI interaction testing
 - Clean test structure and best practices
+- Continuous Integration with GitHub Actions
 
 ---
 
@@ -19,6 +20,7 @@ The purpose of this project is to demonstrate:
 - Cypress
 - JavaScript
 - Node.js
+- GitHub Actions (CI)
 
 ---
 
@@ -45,6 +47,9 @@ The purpose of this project is to demonstrate:
 ## 🏗 Project Structure
 
 ```
+  .github/
+    └── workflows/
+      └── test-cypress.yml
   cypress/
   ├── e2e/
   │ ├── login.cy.js
@@ -67,6 +72,17 @@ The purpose of this project is to demonstrate:
 - Clean test naming conventions
 - Positive and negative scenario separation
 - Page Object Model (POM) to separate test logic from UI interaction
+- CI execution on push and pull requests
+
+---
+
+## 🔄 Continuous Integration
+
+Tests run automatically using GitHub Actions on:
+
+- Every push to `main`
+- Every pull request targeting `main`
+
 
 ---
 
@@ -74,4 +90,4 @@ The purpose of this project is to demonstrate:
 
 > Karen Gisela Valdez  
 QA Engineer transitioning into Automation  
-Focused on scalable, maintainable and reliable test frameworks.
+Focused on scalable, maintainable, and reliable test frameworks.
