@@ -5,7 +5,7 @@ describe('Validando el backend', () =>{
             { fixture: 'productos.json'}
         ).as('getProducts');
 
-        cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
+        cy.visit('/');
 
         cy.wait('@getProducts');
         cy.contains('Brocolli').should('be.visible');
@@ -26,7 +26,7 @@ describe('Validando el backend', () =>{
             ]}
         ).as('getOneProduct');
 
-        cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
+        cy.visit('/');
 
         cy.wait('@getOneProduct');
         cy.contains('Mango').should('be.visible');
@@ -38,7 +38,7 @@ describe('Validando el backend', () =>{
         cy.intercept('GET', '**/data/products.json', {
             statusCode: 500 
         }).as('getProductsError');
-        cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
+        cy.visit('/');
         
         cy.wait('@getProductsError');
         cy.get('.product').should('not.exist');
