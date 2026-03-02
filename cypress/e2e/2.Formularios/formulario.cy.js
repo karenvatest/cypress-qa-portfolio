@@ -1,3 +1,4 @@
+import { generateEmail } from "../utils/dataGenerator";
 describe('Validando formulario de registro', () =>{
     let usuario;
     beforeEach(() =>{
@@ -11,8 +12,13 @@ describe('Validando formulario de registro', () =>{
 
     // envío exitoso del formulario
     it('Debería enviar el formulario completando el registro', () => {
-
-        cy.fillSignupForm(usuario.user_1);
+        const email = generateEmail();
+        cy.fillSignupForm({
+            name: 'Test',
+            lastname: 'QA',
+            email: email,
+            password: 'Test01234'
+        });
         
         cy.get('[type="submit"]').contains('Create account').click();
         cy.get('[data-size="xl"]').should('have.text', "Check your email");
